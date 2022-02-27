@@ -85,7 +85,7 @@ type storeMatcher struct {
 
 func store(p interface{}) matcher {
 	dst := reflect.ValueOf(p).Elem()
-	return storeMatcher{dst, reflect.TypeOf(dst)}
+	return storeMatcher{dst, dst.Type()}
 }
 
 func (m storeMatcher) match(ns []parse.Node) ([]parse.Node, bool) {
